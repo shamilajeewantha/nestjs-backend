@@ -1,7 +1,6 @@
-// src/customers/customer.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('customer')
 export class Customer {
   @PrimaryGeneratedColumn()
   customer_id: number;

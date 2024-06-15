@@ -10,8 +10,17 @@ export class CustomerService {
         private customersRepository: Repository<Customer>,
     ) {}
     
-    async findAll(): Promise<Customer[]> {
+/*     async findAll(): Promise<Customer[]> {
         return this.customersRepository.find();
+    } */
+
+    async findAll(): Promise<Customer[]> {
+        return this.customersRepository.find({
+            where: { email: "alice.johnson@example.com"},
+            relations: {
+                orders: true,
+            },
+        });
     }
     
     async findOneByEmail(email: string): Promise<Customer> {
@@ -22,4 +31,6 @@ export class CustomerService {
         const newCustomer = this.customersRepository.create(customerData);
         return this.customersRepository.save(newCustomer);
     }
+
+    
 }

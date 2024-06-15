@@ -11,10 +11,10 @@ export class OrderController {
       return this.orderService.findAll();
     }
 
-    @Get('by-customer')
+/*     @Get('by-customer')
     async findOneByCustomerId(@Query('customerId') customerId: number): Promise<Order[]> {
       return this.orderService.findOneByCustomerId(customerId);
-    }
+    } */
 
     @Get('by-shop')
     async findOneByShopId(@Query('shopId') shopId: number): Promise<Order[]> {

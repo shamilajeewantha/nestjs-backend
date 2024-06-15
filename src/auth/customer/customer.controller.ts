@@ -59,7 +59,8 @@ export class CustomerController {
         throw new BadRequestException('Invalid email or password');
       }
 
+      const first_name = customer.first_name;
       const token = this.authService.generateJwtToken(customer);
-      return { message: 'Login successful', token };
+      return { message: 'Login successful', first_name:first_name, token };
     }
 }

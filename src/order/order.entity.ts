@@ -1,12 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Customer } from '../auth/customer/customer.entity';
 
 @Entity('orders')
 export class Order {
   @PrimaryGeneratedColumn()
   order_id: number;
 
-  @Column()
-  customer_id: number; 
+  @ManyToOne(() => Customer, (customer) => customer.orders)
+  customer_id: Customer; 
 
   @Column()
   shop_id: number; 

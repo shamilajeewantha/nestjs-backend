@@ -14,9 +14,9 @@ export class OrderService {
     return this.ordersRepository.find();
   }
 
-  async findOneByCustomerId(customerId: number): Promise<Order[]> {
+/*   async findOneByCustomerId(customerId: number): Promise<Order[]> {
     return this.ordersRepository.find({ where: { customer_id: customerId } });
-  }
+  } */
 
   async findOneByShopId(shopId: number): Promise<Order[]> {
     return this.ordersRepository.find({ where: { shop_id: shopId } });

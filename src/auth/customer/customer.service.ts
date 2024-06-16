@@ -10,22 +10,20 @@ export class CustomerService {
         private customersRepository: Repository<Customer>,
     ) {}
     
-/*     async findAll(): Promise<Customer[]> {
-        return this.customersRepository.find();
-    } */
-
     async findAll(): Promise<Customer[]> {
-        return this.customersRepository.find({
-            where: { email: "alice.johnson@example.com"},
-            relations: {
-                orders: true,
-            },
+        return this.customersRepository.find();
+    }
+
+    async findOneByEmail(email: string): Promise<Customer | null> {
+        return this.customersRepository.findOne({
+          where: { email: email },
+          relations: ['orders', 'orders.shop'], // Specify relations to be loaded
         });
-    }
+      }
     
-    async findOneByEmail(email: string): Promise<Customer> {
+/*     async findOneByEmail(email: string): Promise<Customer> {
         return this.customersRepository.findOneBy({ email:email } );
-    }
+    } */
        
     async createCustomer(customerData: Partial<Customer>): Promise<Customer> {
         const newCustomer = this.customersRepository.create(customerData);

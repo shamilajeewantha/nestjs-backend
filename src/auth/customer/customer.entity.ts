@@ -4,7 +4,7 @@ import { Order } from '../../order/order.entity';
 @Entity('customer')
 export class Customer {
   @PrimaryGeneratedColumn()
-  customer_id: number;
+  id: number;
 
   @Column()
   first_name: string;
@@ -18,6 +18,9 @@ export class Customer {
   @Column()
   password: string;
 
-  @OneToMany(() => Order, (order) => order.customer_id)
+  @Column({ nullable: true })
+  phone_number: string;
+
+  @OneToMany(() => Order, (order) => order.customer)
   orders: Order[];
 }

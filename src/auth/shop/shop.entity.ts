@@ -1,10 +1,11 @@
 // src/shops/shop.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Order } from '../../order/order.entity';
 
 @Entity('shop')
 export class Shop {
   @PrimaryGeneratedColumn()
-  shop_id: number;
+  id: number;
 
   @Column()
   shop_name: string;
@@ -20,4 +21,7 @@ export class Shop {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Order, (order) => order.shop)
+  orders: Order[];
 }

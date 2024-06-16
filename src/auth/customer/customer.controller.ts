@@ -18,6 +18,7 @@ export class CustomerController {
       return this.customerService.findAll();
     }
 
+  // GET http://localhost:3000/customer/by-email?email=alice.johnson@example.com
     @Get('by-email')
     async findOneByEmail(@Query('email') email: string) {
       return this.customerService.findOneByEmail(email);
@@ -59,8 +60,8 @@ export class CustomerController {
         throw new BadRequestException('Invalid email or password');
       }
 
-      const first_name = customer.first_name;
+      const email = customer.email;
       const token = this.authService.generateJwtToken(customer);
-      return { message: 'Login successful', first_name:first_name, token };
+      return { message: 'Login successful', email:email, token };
     }
 }

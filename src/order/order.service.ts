@@ -19,7 +19,7 @@ export class OrderService {
   } */
 
   async findOneByShopId(shopId: number): Promise<Order[]> {
-    return this.ordersRepository.find({ where: { shop_id: shopId } });
+    return this.ordersRepository.find({ where: { id: shopId } });
   }
 
   async removeOrder(orderId: number): Promise<void> {

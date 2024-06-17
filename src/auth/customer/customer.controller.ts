@@ -43,7 +43,7 @@ export class CustomerController {
 
 
 // POST http://localhost:3000/customer/login
-//{
+// {
 //   "email": "johndample.com",
 //   "password": "secepassword"
 // }

@@ -13,10 +13,17 @@ export class ShopService {
     async findAll(): Promise<Shop[]> {
         return this.shopsRepository.find();
     }
-    
-    async findOneByEmail(email: string): Promise<Shop> {
+
+    async findOneByEmail(email: string): Promise<Shop | null> {
+        return this.shopsRepository.findOne({
+          where: { email: email },
+          relations: ['orders', 'orders.customer'], // Specify relations to be loaded
+        });
+      }    
+
+/*     async findOneByEmail(email: string): Promise<Shop> {
         return this.shopsRepository.findOneBy({ email:email } );
-    }
+    } */
        
     async createShop(shopData: Partial<Shop>): Promise<Shop> {
         const newShop = this.shopsRepository.create(shopData);

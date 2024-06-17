@@ -26,8 +26,21 @@ export class OrderController {
       return this.orderService.removeOrder(id);
     }
 
-    @Post()
-    async createOrder(@Body() orderData: Partial<Order>): Promise<Order> {
-      return this.orderService.createOrder(orderData);
+// POST http://localhost:3000/order/add
+// {
+//   "customerId": 1,
+//   "shopId": 3,
+//   "measurements": {"m1": {"height":23,"value":175}, "ms": {"height":63,"value":135}},
+//   "order_comments": "new order co",
+//   "expected_delivery_date": "2021-06-16 13:57:07.875737"
+// }
+
+    @Post('add')
+    async createOrder(@Body() orderData: Partial<Order>) {
+      const newOrder = await this.orderService.createOrder(orderData);
+      return {
+        message: 'Order created successfully',
+        order: newOrder,
+      };
     }
 }

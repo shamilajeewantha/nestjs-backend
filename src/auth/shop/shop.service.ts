@@ -23,6 +23,10 @@ export class ShopService {
 
 /*     async findOneByEmail(email: string): Promise<Shop> {
         return this.shopsRepository.findOneBy({ email:email } );
+    }
+
+    async findOneByEmail(id: number): Promise<Shop> {
+        return this.shopsRepository.findOneBy({ id } );
     } */
        
     async createShop(shopData: Partial<Shop>): Promise<Shop> {
